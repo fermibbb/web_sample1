@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dar Safi — Moroccan Pottery &amp; Ceramics</title>
+<meta name="description" content="Hand-thrown Moroccan pottery from Safi. Three generations of master ceramicists making tagines, bowls, vases, and pitchers from local red clay.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #e4dfcb;
+    --bg-deep: #d4ceb6;
+    --bg-soft: #efe9d3;
+    --ink: #2a1810;
+    --terracotta: #b94f2a;
+    --terracotta-deep: #8a3618;
+    --majorelle: #1e3a5f;
+    --brass: #b8893f;
+    --cream: #faf4e6;
+    --clay: #c46a3e;
+    --sage: #8a8d6f;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 15% 25%, rgba(185,79,42,0.08) 0%, transparent 50%),
+      radial-gradient(circle at 85% 75%, rgba(138,141,111,0.12) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    padding: 1.3rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    background: rgba(228,223,203,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(42,24,16,0.1);
+  }
+  .logo {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 1.35rem;
+    letter-spacing: -0.02em;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+  }
+  .logo svg { width: 26px; height: 26px; }
+  .nav-links { display: flex; gap: 2.5rem; }
+  .nav-links a {
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 0.78rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--terracotta); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    align-items: center;
+    padding: 8rem 3rem 4rem;
+    gap: 4rem;
+    position: relative;
+    z-index: 1;
+  }
+  .eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-weight: 500;
+  }
+  .eyebrow::before {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: var(--terracotta);
+  }
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(2.8rem, 7vw, 5.8rem);
+    line-height: 0.98;
+    letter-spacing: -0.03em;
+    margin-bottom: 2rem;
+  }
+  h1 em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--terracotta-deep);
+  }
+  .hero p {
+    font-size: 1.1rem;
+    max-width: 460px;
+    color: rgba(42,24,16,0.78);
+    margin-bottom: 2.5rem;
+  }
+  .cta-row { display: flex; gap: 1rem; align-items: center; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 1rem 2rem;
+    background: var(--ink);
+    color: var(--cream);
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.78rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 500;
+    border-radius: 100px;
+    transition: all 0.3s;
+    font-family: inherit;
+  }
+  .btn:hover { background: var(--terracotta-deep); transform: translateY(-2px); }
+  .btn-link {
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 0.78rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 2px;
+    font-weight: 500;
+  }
+
+  /* HERO VISUAL */
+  .hero-image {
+    position: relative;
+    aspect-ratio: 4/5;
+    max-height: 80vh;
+    width: 100%;
+    max-width: 500px;
+    justify-self: center;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(42,24,16,0.2);
+  }
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .floating-badge {
+    position: absolute;
+    top: 5%;
+    right: -20px;
+    background: var(--cream);
+    border: 1px solid var(--brass);
+    padding: 1rem 1.5rem;
+    border-radius: 100px;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+    transform: rotate(-6deg);
+    z-index: 2;
+  }
+  .floating-badge strong {
+    display: block;
+    font-style: normal;
+    font-weight: 600;
+    color: var(--terracotta);
+    font-size: 1.3rem;
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 7rem 3rem;
+    position: relative;
+    z-index: 1;
+  }
+  h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+  }
+  h2 em { font-style: italic; color: var(--terracotta-deep); }
+
+  /* ABOUT */
+  .about {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  .about-img {
+    aspect-ratio: 4/5;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 25px 60px rgba(42,24,16,0.2);
+  }
+  .about-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .about-img::after {
+    content: '— The Wheel Room, Safi';
+    position: absolute;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    color: var(--cream);
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  }
+  .about-text p {
+    font-size: 1.05rem;
+    color: rgba(42,24,16,0.8);
+    margin-bottom: 1.3rem;
+  }
+  .about-text p.lead {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 1.4rem;
+    line-height: 1.4;
+    color: var(--ink);
+    margin-bottom: 2rem;
+  }
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid rgba(42,24,16,0.2);
+  }
+  .stat-num {
+    font-family: 'Fraunces', serif;
+    font-size: 2.4rem;
+    font-weight: 300;
+    color: var(--terracotta-deep);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(42,24,16,0.65);
+    margin-top: 0.4rem;
+  }
+
+  /* PROCESS */
+  .process { background: var(--bg-deep); }
+  .process-head { text-align: center; margin-bottom: 4rem; }
+  .process-head .eyebrow { justify-content: center; }
+  .process-head h2 { max-width: 700px; margin: 0 auto; }
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .step {
+    text-align: left;
+  }
+  .step-img {
+    aspect-ratio: 4/5;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 15px 40px rgba(42,24,16,0.15);
+  }
+  .step-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .step-num {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--terracotta);
+    margin-bottom: 0.5rem;
+  }
+  .step h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 1.5rem;
+    margin-bottom: 0.7rem;
+  }
+  .step p {
+    color: rgba(42,24,16,0.75);
+    font-size: 0.95rem;
+  }
+
+  /* PRODUCTS */
+  .products { background: var(--bg-soft); }
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 4rem;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  .product {
+    background: var(--cream);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.4s, box-shadow 0.4s;
+  }
+  .product:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px rgba(42,24,16,0.15);
+  }
+  .product-visual {
+    aspect-ratio: 1;
+    overflow: hidden;
+    position: relative;
+  }
+  .product-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s;
+  }
+  .product:hover .product-visual img {
+    transform: scale(1.05);
+  }
+  .product-body {
+    padding: 1.5rem 1.7rem;
+  }
+  .product-body h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 1.25rem;
+    margin-bottom: 0.4rem;
+  }
+  .product-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.8rem;
+  }
+  .product-meta span {
+    font-size: 0.78rem;
+    color: rgba(42,24,16,0.6);
+  }
+  .price {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    color: var(--terracotta-deep);
+    font-size: 1.05rem;
+  }
+
+  /* CONTACT */
+  .contact {
+    background: var(--ink);
+    color: var(--cream);
+    margin: 0 3rem 3rem;
+    border-radius: 20px;
+    padding: 5rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .contact h2 em { color: var(--brass); }
+  .contact .eyebrow { color: var(--brass); }
+  .contact .eyebrow::before { background: var(--brass); }
+  .contact-text p {
+    color: rgba(250,244,230,0.78);
+    font-size: 1.05rem;
+    max-width: 420px;
+    margin-top: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+  }
+  .info-block {
+    border-left: 1px solid rgba(184,137,63,0.4);
+    padding-left: 1.5rem;
+  }
+  .info-block .label {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--brass);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+  .info-block .value {
+    font-family: 'Fraunces', serif;
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: var(--cream);
+    line-height: 1.5;
+  }
+  .info-block a {
+    color: var(--cream);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(250,244,230,0.3);
+    transition: border-color 0.3s;
+  }
+  .info-block a:hover { border-color: var(--brass); }
+
+  /* FORM */
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  .contact-form .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .field label {
+    display: block;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--brass);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+  .field input,
+  .field textarea,
+  .field select {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(250,244,230,0.25);
+    padding: 0.6rem 0;
+    color: var(--cream);
+    font-family: 'Fraunces', serif;
+    font-size: 1.05rem;
+    transition: border-color 0.3s;
+    font-weight: 400;
+  }
+  .field input:focus,
+  .field textarea:focus,
+  .field select:focus {
+    outline: none;
+    border-bottom-color: var(--brass);
+  }
+  .field textarea {
+    resize: vertical;
+    min-height: 80px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+  }
+  .field select { cursor: pointer; }
+  .field select option { background: var(--ink); color: var(--cream); }
+  .contact-form .btn {
+    background: var(--brass);
+    margin-top: 0.5rem;
+    align-self: flex-start;
+  }
+  .contact-form .btn:hover { background: var(--cream); color: var(--ink); }
+  .form-note {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: rgba(184,137,63,0.1);
+    border: 1px solid rgba(184,137,63,0.3);
+    border-radius: 8px;
+    color: var(--brass);
+    font-size: 0.9rem;
+    display: none;
+  }
+  .form-note.visible { display: block; }
+
+  /* FOOTER */
+  footer {
+    padding: 3.5rem 3rem 2rem;
+    border-top: 1px solid rgba(42,24,16,0.15);
+  }
+  .footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+  .footer-top .logo { margin-bottom: 1rem; }
+  .footer-brand p {
+    color: rgba(42,24,16,0.65);
+    font-size: 0.9rem;
+    max-width: 280px;
+  }
+  .footer-col h4 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .footer-col a {
+    color: rgba(42,24,16,0.65);
+    text-decoration: none;
+    font-size: 0.88rem;
+    transition: color 0.3s;
+  }
+  .footer-col a:hover { color: var(--terracotta); }
+  .footer-bottom {
+    padding-top: 2rem;
+    border-top: 1px solid rgba(42,24,16,0.1);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.82rem;
+    color: rgba(42,24,16,0.55);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.3rem; }
+    .nav-links { display: none; }
+    .hero {
+      grid-template-columns: 1fr;
+      padding: 7rem 1.3rem 3rem;
+      gap: 3rem;
+    }
+    section { padding: 4.5rem 1.3rem; }
+    .about { grid-template-columns: 1fr; gap: 3rem; }
+    .process-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .product-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .contact {
+      margin: 0 1.3rem 1.3rem;
+      padding: 3rem 1.8rem;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+    .contact-form .form-row { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    footer { padding: 3rem 1.3rem 1.5rem; }
+    .floating-badge { right: 5%; }
+  }
+  @media (max-width: 500px) {
+    .product-grid { grid-template-columns: 1fr; }
+    .stats-row { grid-template-columns: 1fr 1fr; }
+    .footer-top { grid-template-columns: 1fr; }
+  }
+
+  /* ANIM */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero > div > * { animation: fadeUp 0.8s ease-out backwards; }
+  .hero > div > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero > div > *:nth-child(2) { animation-delay: 0.2s; }
+  .hero > div > *:nth-child(3) { animation-delay: 0.3s; }
+  .hero > div > *:nth-child(4) { animation-delay: 0.4s; }
+  .hero-image { animation: fadeUp 1s ease-out 0.3s backwards; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">
+    <svg viewBox="0 0 24 24" fill="none">
+      <ellipse cx="12" cy="18" rx="7" ry="3" stroke="#2a1810" stroke-width="1.5"/>
+      <path d="M5 18 Q3 12 8 7 L8 5 L16 5 L16 7 Q21 12 19 18" stroke="#b94f2a" stroke-width="1.5" fill="none"/>
+    </svg>
+    Dar Safi
+  </div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#process">Process</a>
+    <a href="#products">Pottery</a>
+    <a href="#contact">Visit Us</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div>
+    <div class="eyebrow">Safi, Morocco · Since 1958</div>
+    <h1>Pottery shaped by <em>hand</em>, fired by <em>fire</em>.</h1>
+    <p>Three generations of master ceramicists from Safi — Morocco's pottery capital. Each piece thrown, painted, and glazed in our family workshop.</p>
+    <div class="cta-row">
+      <a href="#products" class="btn">See Our Pottery →</a>
+      <a href="#contact" class="btn-link">Visit the Atelier</a>
+    </div>
+  </div>
+  <div class="hero-image">
+    <div class="floating-badge">
+      <strong>100%</strong>
+      hand-thrown
+    </div>
+    <img src="images/hero.jpg" alt="Handpainted Moroccan ceramic" loading="eager">
+  </div>
+</section>
+
+<section id="about">
+  <div class="about">
+    <div class="about-img">
+      <img src="images/about.jpg" alt="Potter shaping clay on a wheel">
+    </div>
+    <div class="about-text">
+      <div class="eyebrow">Our Story</div>
+      <h2>Clay from the <em>hills</em>, kilned by <em>hand</em>.</h2>
+      <p class="lead">Dar Safi was founded by Master Mohamed El-Khattabi in 1958, in a small workshop overlooking the Atlantic.</p>
+      <p>We dig our clay from the red hills outside Safi, the same earth our grandfathers used. Every bowl, tagine, and vase is shaped on a foot-driven wheel, painted free-hand with natural pigments, and fired in wood-burning kilns.</p>
+      <p>No two pieces are identical. Each one carries the fingerprints of the artisan who made it — a quiet signature passed down through generations.</p>
+      <div class="stats-row">
+        <div>
+          <div class="stat-num">65+</div>
+          <div class="stat-label">Years of Craft</div>
+        </div>
+        <div>
+          <div class="stat-num">12</div>
+          <div class="stat-label">Master Artisans</div>
+        </div>
+        <div>
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Hand-Thrown</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="process" class="process">
+  <div class="process-head">
+    <div class="eyebrow">Our Craft</div>
+    <h2>From <em>earth</em> to <em>vessel</em>.</h2>
+  </div>
+  <div class="process-grid">
+    <div class="step">
+      <div class="step-img"><img src="images/process-1.jpg" alt="Shaping clay on a pottery wheel"></div>
+      <div class="step-num">— Step 01</div>
+      <h3>Shaping</h3>
+      <p>Red clay from the Safi hills is wedged, centered on a foot-driven wheel, and pulled into form by our master throwers.</p>
+    </div>
+    <div class="step">
+      <div class="step-img"><img src="images/process-2.jpg" alt="Hand-painting decoration"></div>
+      <div class="step-num">— Step 02</div>
+      <h3>Painting</h3>
+      <p>Each piece is hand-painted free-form with natural mineral pigments — no stencils, no transfers, just inherited patterns.</p>
+    </div>
+    <div class="step">
+      <div class="step-img"><img src="images/process-3.jpg" alt="Finished glazed ceramics"></div>
+      <div class="step-num">— Step 03</div>
+      <h3>Firing</h3>
+      <p>Finished pieces are kilned twice in wood-burning ovens, sealing the glaze and locking in the deep, layered colors.</p>
+    </div>
+  </div>
+</section>
+
+<section id="products" class="products">
+  <div class="section-head">
+    <div>
+      <div class="eyebrow">The Collection</div>
+      <h2>Selected <em>pieces</em>.</h2>
+    </div>
+    <a href="#contact" class="btn-link">Inquire About Pieces →</a>
+  </div>
+
+  <div class="product-grid">
+
+    <div class="product">
+      <div class="product-visual">
+        <img src="images/product-1.jpg" alt="Terracotta vases">
+      </div>
+      <div class="product-body">
+        <h3>Terracotta Vase Trio</h3>
+        <div class="product-meta">
+          <span>Decorative · Natural Clay</span>
+          <span class="price">€95</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="product-visual">
+        <img src="images/product-2.jpg" alt="Handmade ceramic bowls">
+      </div>
+      <div class="product-body">
+        <h3>Earth Bowl Set</h3>
+        <div class="product-meta">
+          <span>Serving · Set of 4</span>
+          <span class="price">€68</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="product-visual">
+        <img src="images/product-3.jpg" alt="Ceramic pitcher">
+      </div>
+      <div class="product-body">
+        <h3>Cream Pitcher</h3>
+        <div class="product-meta">
+          <span>Serving · 1L</span>
+          <span class="price">€72</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="product-visual">
+        <img src="images/product-4.jpg" alt="Stoneware jugs">
+      </div>
+      <div class="product-body">
+        <h3>Stoneware Jugs</h3>
+        <div class="product-meta">
+          <span>Set of 3 · Glazed</span>
+          <span class="price">€110</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="product-visual">
+        <img src="images/product-5.jpg" alt="Ceramic cup and saucer">
+      </div>
+      <div class="product-body">
+        <h3>Tea Cup &amp; Saucer</h3>
+        <div class="product-meta">
+          <span>Set of 6 · Hand-glazed</span>
+          <span class="price">€55</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="product-visual">
+        <img src="images/product-6.jpg" alt="Stack of ceramic bowls and a vase">
+      </div>
+      <div class="product-body">
+        <h3>Studio Collection</h3>
+        <div class="product-meta">
+          <span>Mixed pieces · 5 items</span>
+          <span class="price">€185</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact">
+    <div>
+      <div class="eyebrow">Visit · Order · Custom Work</div>
+      <h2>Come <em>see</em> us at the wheel.</h2>
+      <p class="contact-text-p" style="color: rgba(250,244,230,0.78); font-size: 1.05rem; max-width: 420px; margin-top: 1.5rem; margin-bottom: 2.5rem;">The workshop is open to visitors Tuesday through Saturday. Watch our artisans work, browse the showroom, or commission a custom piece.</p>
+      <div class="contact-info">
+        <div class="info-block">
+          <div class="label">Address</div>
+          <div class="value">14 Rue des Potiers<br>Colline des Potiers, Safi 46000<br>Morocco</div>
+        </div>
+        <div class="info-block">
+          <div class="label">Get in Touch</div>
+          <div class="value">
+            <a href="mailto:hello@darsafi.ma">hello@darsafi.ma</a><br>
+            <a href="tel:+212524622187">+212 524 62 21 87</a>
+          </div>
+        </div>
+        <div class="info-block">
+          <div class="label">Hours</div>
+          <div class="value">Tue – Sat · 9:00 – 18:00<br>Closed Sunday &amp; Monday</div>
+        </div>
+      </div>
+    </div>
+    <form class="contact-form" id="contactForm" novalidate>
+      <div class="form-row">
+        <div class="field">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+      </div>
+      <div class="field">
+        <label for="subject">I'm interested in</label>
+        <select id="subject" name="subject">
+          <option value="visit">Visiting the workshop</option>
+          <option value="order">Placing an order</option>
+          <option value="custom">A custom commission</option>
+          <option value="wholesale">Wholesale inquiry</option>
+          <option value="other">Something else</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" required></textarea>
+      </div>
+      <button type="submit" class="btn">Send Message →</button>
+      <div class="form-note" id="formNote">
+        Thank you — we'll be in touch within 2 business days. Shukran!
+      </div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="logo">
+        <svg viewBox="0 0 24 24" fill="none">
+          <ellipse cx="12" cy="18" rx="7" ry="3" stroke="#2a1810" stroke-width="1.5"/>
+          <path d="M5 18 Q3 12 8 7 L8 5 L16 5 L16 7 Q21 12 19 18" stroke="#b94f2a" stroke-width="1.5" fill="none"/>
+        </svg>
+        Dar Safi
+      </div>
+      <p>Handmade Moroccan pottery from Safi, the country's pottery capital. Three generations, one workshop.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <ul>
+        <li><a href="#products">All Pottery</a></li>
+        <li><a href="#">Tagines</a></li>
+        <li><a href="#">Bowls &amp; Plates</a></li>
+        <li><a href="#">Vases</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>About</h4>
+      <ul>
+        <li><a href="#about">Our Story</a></li>
+        <li><a href="#process">The Craft</a></li>
+        <li><a href="#">Sustainability</a></li>
+        <li><a href="#">Press</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <ul>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Pinterest</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#">Shipping &amp; Care</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 Dar Safi · Handmade in Safi, Morocco</div>
+    <div>Site built with care · Privacy · Terms</div>
+  </div>
+</footer>
+
+<script>
+  // Simple form handler (demo only — wire this to a backend / Formspree / Netlify forms in production)
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var name = document.getElementById('name').value.trim();
+    var email = document.getElementById('email').value.trim();
+    var message = document.getElementById('message').value.trim();
+    if (!name || !email || !message) {
+      alert('Please fill in name, email, and message.');
+      return;
+    }
+    document.getElementById('formNote').classList.add('visible');
+    this.reset();
+    setTimeout(function() {
+      document.getElementById('formNote').classList.remove('visible');
+    }, 6000);
+  });
+</script>
+
+</body>
+</html>
